@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Ti, Mi Amor 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato&family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .contenedor {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .heart {
+      width: 140px;
+      height: 125px;
+      background: #e91e63;
+      position: relative;
+      margin: 20px auto;
+      animation: beat 1s infinite;
+      clip-path: polygon(0 35%, 50% 100%, 100% 35%, 75% 0, 50% 20%, 25% 0);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 140px;
+      height: 125px;
+      background: #e91e63;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -70px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 70px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .heart-content {
+      margin-top: 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    input[type="date"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      margin: 10px 0;
+      font-family: 'Lato', sans-serif;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #d81b60;
+      color: white;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .carta {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .carta h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #d81b60;
+    }
+
+    .carta p {
+      font-size: 1.1rem;
+      color: #6a1b9a;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .mensaje-final {
+      font-size: 1.8rem;
+      color: #e91e63;
+      font-weight: bold;
+      animation: fadeIn 2s ease forwards;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Corazones flotando 💖 + 🤍 */
+    .corazon {
+      position: absolute;
+      font-size: 20px;
+      animation: float 10s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .spotify {
+      margin-top: 20px;
+    }
+
+    .spotify a {
+      text-decoration: none;
+      color: #d81b60;
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ❤️ Corazones animados -->
+<script>
+  const emojis = ["💖", "🤍"];
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('corazon');
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+    heart.style.fontSize = (12 + Math.random() * 24) + 'px';
+    document.body.appendChild(heart);
+  }
+</script>
+
+<!-- 🎵 Música instrumental suave de fondo -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/09/13/audio_54b3e69436.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML.
+</audio>
+
+<div class="contenedor" id="inicio">
+  <div class="heart"></div>
+  <div class="heart-content">
+    <label for="fecha">Introduce nuestra fecha:</label><br>
+    <input type="date" id="fecha"><br>
+    <button onclick="verificarFecha()">Abrir Carta</button>
+  </div>
+</div>
+
+<div class="contenedor carta" id="carta">
+  <h2>Mi Amor 💌</h2>
+  <p>
+    Quiero decirte que el tiempo que he pasado contigo ha sido realmente especial.  
+    Cada momento a tu lado me llena de alegría, quiero dedicarte este pequeño detalle con todo mi corazón.  
+    Gracias por existir, por permitirme estar a tu lado y por hacer que cada día sea más lindo.
+  </p>
+
+  <div class="mensaje-final" id="mensajeFinal">Te amo 💖</div>
+
+  <div class="spotify">
+     <em>Escuché esta canción y me recordó a ti:</em><br><br>
+    <a href="https://open.spotify.com/track/1XScpA1QZgKrKmn3jUPpiA?si=J-Rz6u61TMCJRy9A7Siy3A" target="_blank">
+      💘 Abrir en Spotify 💘
+    </a>
+  </div>
+</div>
+
+<script>
+  function verificarFecha() {
+    const fecha = document.getElementById("fecha").value;
+    if (fecha === "2025-02-03") {
+      document.getElementById("inicio").style.display = "none";
+      document.getElementById("carta").style.display = "block";
+    } else {
+      alert("Fecha incorrecta 💔");
+    }
+  }
+</script>
+</body>
+</html>
